@@ -2,8 +2,10 @@ const express = require("express");
 const { default: mongoose } = require("mongoose");
 const app = express();
 const port = 8070;
+const bodyParser = require("body-parser");
 
 require("dotenv").config();
+app.use(express.json());
 
 MONGODB_URL = process.env.MONGODB_URL;
 
