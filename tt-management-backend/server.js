@@ -3,6 +3,9 @@ const { default: mongoose } = require("mongoose");
 const app = express();
 const port = 8070;
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
+app.use(cors());
 
 require("dotenv").config();
 app.use(express.json());
