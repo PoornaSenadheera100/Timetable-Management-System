@@ -11,15 +11,21 @@ export default function Login(props) {
     axios
       .get(`http://localhost:8070/user/${username}/${password}`)
       .then((res) => {
-        console.log(res.data);
-        redirect(res.data.userType);
+        if (res.data === null) {
+          alert("Please enter valid username and password!");
+        } else {
+          redirect(res.data.userType);
+        }
       });
   }
 
   function redirect(usrType) {
     if (usrType === "admin") {
-    } else if (usrType === "") {
-    } else if (usrType === "") {
+      window.location.replace("/admin");
+    } else if (usrType === "lecturer") {
+      window.location.replace("/lecturer");
+    } else if (usrType === "student") {
+      window.location.replace("/student");
     } else {
       alert("Cannot validate the user type!");
     }
