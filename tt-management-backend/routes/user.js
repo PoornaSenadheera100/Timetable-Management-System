@@ -31,4 +31,16 @@ router.route("/").post((req, res) => {
     });
 });
 
+router.route("/:email/:password").get(async (req, res) => {
+  const email = req.params.email;
+  const password = req.params.password;
+  User.findOne({ email: email, password: password })
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 module.exports = router;
